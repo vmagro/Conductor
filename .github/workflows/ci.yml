@@ -15,6 +15,15 @@ jobs:
       with:
         toolchain: stable
         override: true
+    - name: Cache node_modules
+      uses: actions/cache@v4
+      with:
+        path: |
+          ui/main-window/node_modules
+          ui/stdout/node_modules
+        key: ${{ runner.os }}-node-${{ hashFiles('ui/main-window/package-lock.json', 'ui/main-window/yarn.lock', 'ui/stdout/package-lock.json', 'ui/stdout/yarn.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
     - name: Cache cargo registry and build
       uses: actions/cache@v4
       with:
