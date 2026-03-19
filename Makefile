@@ -1,6 +1,9 @@
 
 .PHONY: main
 
+# Node 17+ uses OpenSSL 3 which breaks webpack 4's MD4 hash; use legacy provider
+export NODE_OPTIONS=--openssl-legacy-provider
+
 main:
 	cd ui/main-window \
 		&& npm run build:react

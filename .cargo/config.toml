@@ -1,0 +1,5 @@
+[env]
+# webview-sys (web-view dependency) uses old macOS Objective-C code that
+# passes integers to id-typed parameters. Clang 16+ treats this as an error.
+# These flags downgrade those diagnostics back to warnings so the build succeeds.
+CFLAGS = "-Wno-int-conversion -Wno-incompatible-pointer-types"
