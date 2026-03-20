@@ -32,6 +32,7 @@ jobs:
     - name: Bundle Application
       run: |
           cargo bundle --format osx --release
+          /usr/libexec/PlistBuddy -c "Delete :LSRequiresCarbon" target/release/bundle/osx/Conductor.app/Contents/Info.plist
           codesign --remove-signature --deep target/release/bundle/osx/Conductor.app
     - name: Archive Application
       uses: actions/upload-artifact@v4
