@@ -48,6 +48,7 @@ core-foundation = "0.9.0"
 name = "Conductor"
 identifier = "io.github.Redrield.Conductor"
 copyright = "MPL-2"
+icon = ["icons/icon.png"]
 
 [package.metadata.rpm]
 package = "conductor"
