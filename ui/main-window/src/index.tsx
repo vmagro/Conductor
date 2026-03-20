@@ -6,6 +6,8 @@ import {Provider} from "react-redux";
 import {initState, rootReducer} from "./store";
 import {createStore} from "redux";
 import DriverStation from "./DriverStation";
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+require('bootstrap');
 
 
 // Uncomment this for dev server, comment again for rust integration
