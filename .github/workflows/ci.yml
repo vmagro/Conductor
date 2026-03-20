@@ -24,19 +24,12 @@ jobs:
         key: ${{ runner.os }}-node-${{ hashFiles('ui/main-window/package-lock.json', 'ui/main-window/yarn.lock', 'ui/stdout/package-lock.json', 'ui/stdout/yarn.lock') }}
         restore-keys: |
           ${{ runner.os }}-node-
-    - name: Cache cargo registry and build
-      uses: actions/cache@v4
-      with:
-        path: |
-          ~/.cargo/registry
-          ~/.cargo/git
-          target
-        key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-cargo-
     - name: Install Cargo tools
       run: |
           cargo install cargo-bundle
+    - uses: Swatinem/rust-cache@v2
+      with:
+        prefix-key: "rust" 
     - name: Build Application
       run: |
         make setup && make release
